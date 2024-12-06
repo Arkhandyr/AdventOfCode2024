@@ -1450,11 +1450,8 @@ static void RunPart2(string input)
     foreach (var update in updatesToOrder)
     {
         string[] pages = update.Split(',');
-        Console.WriteLine("Before:" + string.Join(',', pages));
         pages = Order(pages, rules);
         var middlePageIndex = pages.Length / 2;
-        Console.WriteLine("After:" + string.Join(',', pages));
-        Console.WriteLine("Middle:" + int.Parse(pages[middlePageIndex]));
         result += int.Parse(pages[middlePageIndex]);
     }
 
@@ -1483,7 +1480,6 @@ static string[] Order(string[] pages, string[] rules)
             if (rules.Contains($"{pages[i + 1]}|{pages[i]}"))
             {
                 (pages[i], pages[i + 1]) = (pages[i + 1], pages[i]);
-                Console.WriteLine("-------" + string.Join(',', pages));
             }
         }
     }
